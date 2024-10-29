@@ -18,27 +18,26 @@ public:
         encrypted = "";
         int i = 0;
         while (i < info.length()) {
-            int count = 1;
+            int count = 49; 
             while (i + 1 < info.length() && info[i] == info[i + 1]) {
                 count++;
                 i++;
             }
             encrypted += info[i];
-            char asciiCount[3];
+
+            
+            char asciiCount[3]; 
             int len = 0;
-
             while (count > 0) {
-                asciiCount[len++] = (count % 10) + '0';
-                count /= 10;
+                asciiCount[len++] = (count % 10) + '0'; 
+                count /= 10; 
             }
-
             for (int k = 0; k < len / 2; k++) {
                 swap(asciiCount[k], asciiCount[len - 1 - k]);
             }
-
             asciiCount[len] = '\0';
-            encrypted += asciiCount;
-            i++;
+            encrypted += asciiCount; 
+            i++; 
         }
     }
 
@@ -48,12 +47,15 @@ public:
         while (i < encryptedText.length()) {
             char currentChar = encryptedText[i];
             i++;
+
             int count = 0;
             while (i < encryptedText.length() && isdigit(encryptedText[i])) {
-                count = count * 10 + (encryptedText[i] - '0');
+                count = count * 10 + (encryptedText[i] - '0'); 
                 i++;
             }
-            for (int j = 0; j < count; j++) {
+
+            
+            for (int j = 0; j < count-48; j++) {
                 decrypted += currentChar;
             }
         }
